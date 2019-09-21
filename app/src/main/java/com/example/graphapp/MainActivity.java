@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,7 +41,27 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         // Hide the app title bar.
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        customSurfaceView = new MySurface(getApplicationContext());
+        customSurfaceView.setOnTouchListener(this);
+        canvasLayout.addView(customSurfaceView);
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawGraph = true;
+            }
+        });
+        quadratic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawGraph = false;
+            }
+        });
+        exponential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawGraph = false;
+            }
+        });
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
