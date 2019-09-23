@@ -10,6 +10,7 @@ import android.view.SurfaceView;
 
 public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
     private SurfaceHolder surfaceholder = null;
+    private Paint paint = null;
 
     class Pt {
         float x, y;
@@ -33,7 +34,16 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         // TODO Auto-generated constructor stub
     }
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
-        onDraw(canvas);
+        drawGraph();
+    }
+    @Override
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+
+    }
+    @Override
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        paint = null;
+
     }
     @Override
     protected void onDraw(Canvas canvas) {
@@ -49,5 +59,16 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
             path.lineTo(myPath[i].x, myPath[i].y);
         }
         canvas.drawPath(path, paint);
+    }
+    public void drawGraph(){
+        surfaceholder = getHolder();
+        Canvas canvas = surfaceholder.lockCanvas();
+        Paint surfaceBackground = new Paint();
+        surfaceBackground.setColor(Color.BLACK);
+        canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), surfaceBackground);
+        paint.setColor(Color.RED);
+        canvas.drawLine(-400, -400, 400, 400, paint);
+        surfaceholder.unlockCanvasAndPost(canvas);
+
     }
 }

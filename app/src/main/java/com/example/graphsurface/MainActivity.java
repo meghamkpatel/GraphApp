@@ -1,22 +1,31 @@
 package com.example.graphsurface;
 
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.Layout;
+import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.graphsurface.ui.main.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
+    MySurface customSurfaceView = null;
+    private LinearLayout canvasLayout = null;
+    private TabLayout.Tab drawGraph = null;
 
+    private TabLayout.Tab enterValues = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +35,13 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        customSurfaceView = new MySurface(getApplicationContext());
+        customSurfaceView.setOnTouchListener(this);
+        canvasLayout.addView(customSurfaceView);
+    }
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return false;
     }
 }
