@@ -1,4 +1,4 @@
-package com.example.graphapp;
+package com.example.graphsurface;
 
 import org.junit.Test;
 

@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">GraphApp</string>
-    <string name="title_linear">linear</string>
-    <string name="title_quadratic">quadratic</string>
-    <string name="title_exponential">exponential</string>
-    <string name="linear_val_m">m=</string>
-    <string name="linear_val_b">b=</string>
+    <string name="app_name">GraphSurface</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

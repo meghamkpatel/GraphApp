@@ -1,4 +1,4 @@
-package com.example.graphapp;
+package com.example.graphsurface;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.graphapp", appContext.getPackageName());
+        assertEquals("com.example.graphsurface", appContext.getPackageName());
     }
 }
